@@ -23,12 +23,50 @@
             text-decoration: none;
         }
 
+        .search {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            height: 30px;
+
+            input {
+                width: 100%;
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+                outline: none;
+                height: 40px;
+                border: none;
+                padding: 0 10px;
+            }
+
+            .search-icon {
+                height: 40px;
+                background-color: #333;
+                padding: 10px;
+                color: white;
+                font-size: 20px;
+                cursor: pointer;
+                transition: all .3s ease;
+                background-color: white;
+                color: black;
+                border-left: 1px solid black;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+
+            }
+        }
+
         .icon-bag {
             a {
                 font-size: 20px;
                 color: white;
                 cursor: pointer;
                 position: relative;
+                line-height: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             span {
@@ -46,6 +84,44 @@
 
         }
 
+        .menu {
+            display: flex;
+            align-items: center;
+            line-height: 80px;
+            color: white;
+            font-size: 20px;
+            display: none;
+        }
 
+
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .header {
+
+        .container {
+
+            display: flex;
+            padding: 40px;
+            gap: 30px;
+
+            .logo {
+                display: none;
+            }
+
+            .search {
+                flex: 1;
+            }
+
+            .icon-bag {}
+
+            .menu {
+                display: block;
+                margin-top: 10px;
+            }
+
+
+        }
     }
 }

@@ -7,10 +7,10 @@ import { FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="footer-col">
+    <footer className="footer">
+      <div className="container">
+        <div className="row">
+          <div className="footer-col">
             <h4>Company</h4>
             <ul>
               <li>
@@ -27,7 +27,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div class="footer-col">
+          <div className="footer-col">
             <h4>Get help</h4>
             <ul>
               <li>
@@ -47,7 +47,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div class="footer-col">
+          <div className="footer-col">
             <h4>Online shop</h4>
             <ul>
               <li>
@@ -64,9 +64,9 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div class="footer-col">
+          <div className="footer-col">
             <h4>Follow us</h4>
-            <div class="social-links">
+            <div className="social-links">
               <a href="#!">
                 <FaFacebook />
               </a>

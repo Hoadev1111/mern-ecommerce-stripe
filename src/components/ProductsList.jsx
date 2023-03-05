@@ -43,6 +43,8 @@ const Products = () => {
     <div className="productlist">
       {loading ? (
         <h1>Loading...</h1>
+      ) : items.length === 0 ? (
+        <span>Not found product</span>
       ) : (
         items.map((product) => {
           return (
