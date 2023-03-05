@@ -1,0 +1,36 @@
+.empty-cart {
+    width: 100%;
+    height: calc(100vh - 80px - 250px);
+    margin-bottom: 10px;
+
+    .container {
+        border-radius: 10px;
+        box-shadow: 2px 9px 25px 3px rgba(0, 0, 0, 0.45);
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 30px;
+
+        .icon-empty {
+            font-size: 40px;
+        }
+
+        a {
+            text-decoration: none;
+            border: 1px solid black;
+            padding: 5px;
+            border-radius: 5px;
+
+            color: #333;
+
+            &:hover {
+                background-color: #333;
+                color: white;
+            }
+        }
+
+
+    }
+}
