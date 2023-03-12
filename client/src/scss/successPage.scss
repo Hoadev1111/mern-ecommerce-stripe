@@ -1,0 +1,22 @@
+.success-page {
+    width: 100vw;
+    min-height: calc(100vh - 80px - 253px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+    button {
+        padding: 5px;
+        border-radius: 5px;
+        transition: all .2s ease;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #333;
+            color: white;
+        }
+
+    }
+}

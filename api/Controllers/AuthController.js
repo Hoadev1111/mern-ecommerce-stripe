@@ -1,10 +1,10 @@
 const User = require('../Models/AuthModel')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const stripe = require('stripe')('sk_test_51MVWVdJKOVcicmiyz6BGZKkm1bnH5Nj4MHipAigfqHukmwQOC4ClV06dDBRTa6TRaawlxFev1a9EENJFxAH6dAsi00jsRIGwbz');
 
 const SECRET_KEY = 'hoadeptrai';
 // const SECRET_KEY = process.env.SECRET_KEY_VALUE;
-
 
 
 const signup = async (req, res) => {
@@ -116,6 +116,51 @@ const checkUser = async (req, res, next) => {
     }
 };
 
+const checkout = async (req, res, next) => {
+    const { carts } = req.body;
+    console.log('carts: ', carts);
+
+    // const product = await stripe.products.create({
+    //     name: 'Product Name', // tên của sản phẩm
+    // });
+
+    // const price = await stripe.prices.create({
+    //     unit_amount: 1000, // giá của sản phẩm (đơn vị: cent)
+    //     currency: 'usd', // đơn vị tiền tệ
+    //     product: product.id, // ID của sản phẩm (product object)
+    // });
+
+    const line_items = req.body.carts.map((item) => {
+        return {
+            price_data: {
+                currency: 'usd',
+                product_data: {
+                    name: item.title,
+                    images: [item.image],
+                },
+                unit_amount: item.price * 100,
+            },
+            quantity: item.quantity,
+        }
+    });
+
+
+
+    const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        shipping_address_collection: {
+            allowed_countries: ["US", "CA", "KE"],
+        },
+
+        line_items,
+        mode: "payment",
+        success_url: 'http://localhost:3000/success',
+        cancel_url: 'http://localhost:3000/cancel',
+    });
+
+    res.send({ url: session.url });
+}
+
 const refreshToken = async (req, res, next) => {
     const token_2 = req?.headers?.cookie?.split('=')[1];
     const prevToken = req.cookies['auth-mern'] || token_2;
@@ -151,5 +196,5 @@ const refreshToken = async (req, res, next) => {
 
 
 module.exports = {
-    login, signup, checkUser, refreshToken
+    login, signup, checkUser, refreshToken, checkout
 }
