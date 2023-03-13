@@ -15,7 +15,6 @@ const Cart = () => {
   const [disableButton, setDisableButton] = useState(false);
   const carts = useSelector((state) => state.cart.carts);
   const PORT = process.env.PORT || 4001;
-  console.log('PORT: ', PORT);
 
   const totalPriceItem = carts.reduce(
     (init, cur) => init + cur.price * cur.quantity,

@@ -1,17 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
-import {
-  FaShoppingBag,
-  FaSearch,
-  FaBars,
-  FaSignInAlt,
-  FaSignOutAlt,
-} from 'react-icons/fa';
+import { FaShoppingBag, FaSearch } from 'react-icons/fa';
 import '../scss/header.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useCookies } from 'react-cookie';
-import { setItems } from '../features/cartSlice';
-import { isLogin } from '../features/AuthSlice';
+import { setItems, clearCart } from '../features/cartSlice';
 import { logout } from '../features/AuthSlice';
 import axios from 'axios';
 
@@ -24,7 +17,9 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const quantity = carts.length;
+  let quantity = carts.length;
+
+  // const quantity = carts.length;
   const headerRef = useRef();
   const initialDataRef = useRef([]);
 
@@ -67,6 +62,7 @@ const Header = () => {
   const handleLogout = () => {
     removeCookie('auth-mern');
     dispatch(logout());
+    // dispatch(clearCart());
     navigate('/login');
   };
 

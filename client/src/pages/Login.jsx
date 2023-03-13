@@ -17,7 +17,6 @@ const Login = () => {
   // take param and navigate to it when user login
   const paramDetail = detail?.split('0/')[1];
   const PORT = process.env.PORT || 4001;
-  console.log('PORT: ', PORT);
 
   useEffect(() => {
     if (cookies['auth-mern']) {
