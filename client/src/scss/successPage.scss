@@ -6,6 +6,15 @@
     align-items: center;
     flex-direction: column;
     gap: 10px;
+    padding: 10px;
+
+    h2 {
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
 
     button {
         padding: 5px;

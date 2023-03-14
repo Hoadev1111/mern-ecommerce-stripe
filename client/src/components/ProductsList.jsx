@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
-import { logout } from '../features/AuthSlice';
 import Loading from './Loading';
+import NotFoundProduct from '../pages/NotFoundProduct';
 
 let firstRender = true;
 const Products = () => {
@@ -71,7 +71,7 @@ const Products = () => {
         // <h1>Loading...</h1>
         <Loading />
       ) : items.length === 0 ? (
-        <span>Not found product</span>
+        <NotFoundProduct />
       ) : (
         items.map((product) => {
           return (
@@ -85,7 +85,9 @@ const Products = () => {
                   <img className="img" src={product.image} alt="" />
                 </div>
                 <div className="product-info">
-                  <h4 className="title">{product.title}</h4>
+                  <h4 className="title" title={product.title}>
+                    {product.title}
+                  </h4>
                   <span className="price">Price: ${product.price}</span>
                   <button onClick={(e) => handleAddToCart(e, product)}>
                     Add to cart

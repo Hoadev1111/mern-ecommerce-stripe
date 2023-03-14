@@ -47,7 +47,7 @@ const Cart = () => {
 
   return (
     <div className="shopping-cart">
-      <h1>Shopping cart</h1>
+      <h1 className="title">Shopping cart</h1>
       {carts.length === 0 ? (
         <EmptyCart />
       ) : (
@@ -90,7 +90,7 @@ const Cart = () => {
           ))}
           <div className="total">
             <div className="total-pill">
-              <h1>Total:</h1>
+              <h1 className="total-title">Total:</h1>
               <span className="total-price">${totalPriceItem.toFixed(2)}</span>
             </div>
             <button disabled={disableButton} onClick={handleCheckOut}>
