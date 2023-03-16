@@ -1,10 +1,10 @@
 const User = require('../Models/AuthModel')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const stripe = require('stripe')('sk_test_51MVWVdJKOVcicmiyz6BGZKkm1bnH5Nj4MHipAigfqHukmwQOC4ClV06dDBRTa6TRaawlxFev1a9EENJFxAH6dAsi00jsRIGwbz');
+require('dotenv').config();
+const stripe = require('stripe')(process.env.STRIPE_KEY_VALUE);
 
-const SECRET_KEY = 'hoadeptrai';
-// const SECRET_KEY = process.env.SECRET_KEY_VALUE;
+const SECRET_KEY = process.env.SECRET_KEY_VALUE;
 
 
 const signup = async (req, res) => {
