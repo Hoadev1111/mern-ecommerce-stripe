@@ -28,13 +28,10 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
-        `https://mern-ecommerce-stripe-hoadevweb.onrender.com/login`,
-        {
-          email,
-          password,
-        }
-      );
+      const res = await axios.post(`http://localhost:4000/login`, {
+        email,
+        password,
+      });
       const data = res.data;
       dispatch(login());
       // if user is in detail page, after login navigate to it

@@ -9,7 +9,7 @@ require('dotenv').config();
 const app = express();
 const URL = process.env.DATABASE_URL;
 
-app.use(cors({ origin: ["http://localhost:3000", "https://resilient-praline-bdc64e.netlify.app/"], credentials: true }));
+app.use(cors({ origin: ["http://localhost:3000"], credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 mongoose.set('strictQuery', true);
 
 mongoose
-    .connect(URL, {
+    .connect("mongodb://localhost:27017/auth_mern", {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
