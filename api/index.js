@@ -1,4 +1,5 @@
 const express = require('express');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
@@ -10,6 +11,10 @@ const app = express();
 const URL = process.env.DATABASE_URL;
 
 app.use(cors({ origin: ["http://localhost:3000", "https://eloquent-eclair-07e276.netlify.app"], credentials: true }));
+app.use('/api', createProxyMiddleware({
+    target: 'https://mern-ecommerce-stripe-hoadevweb.onrender.com',
+    changeOrigin: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 
