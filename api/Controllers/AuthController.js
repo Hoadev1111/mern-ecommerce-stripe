@@ -93,6 +93,7 @@ const login = async (req, res, next) => {
     return res.status(200).json({ message: "Login successful", user: existingUser, token })
 };
 
+//CHECK USER API
 const checkUser = async (req, res, next) => {
     const token_2 = req?.headers?.cookie?.split('=')[1];
     const token = req.cookies['auth-mern'] || token_2;
@@ -116,19 +117,10 @@ const checkUser = async (req, res, next) => {
     }
 };
 
+//CHECKOUT API
 const checkout = async (req, res, next) => {
     const { carts } = req.body;
     console.log('carts: ', carts);
-
-    // const product = await stripe.products.create({
-    //     name: 'Product Name', // tên của sản phẩm
-    // });
-
-    // const price = await stripe.prices.create({
-    //     unit_amount: 1000, // giá của sản phẩm (đơn vị: cent)
-    //     currency: 'usd', // đơn vị tiền tệ
-    //     product: product.id, // ID của sản phẩm (product object)
-    // });
 
     const line_items = req.body.carts.map((item) => {
         return {
@@ -161,6 +153,8 @@ const checkout = async (req, res, next) => {
     res.send({ url: session.url });
 }
 
+
+// REFRESH TOKEN API
 const refreshToken = async (req, res, next) => {
     const token_2 = req?.headers?.cookie?.split('=')[1];
     const prevToken = req.cookies['auth-mern'] || token_2;
