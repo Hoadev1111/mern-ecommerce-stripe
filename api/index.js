@@ -7,6 +7,7 @@ const authRouter = require('./Routes/AuthRoutes')
 require('dotenv').config();
 
 const app = express();
+const URL = process.env.MONGODB_URL;
 
 app.use(cors({ origin: ["http://localhost:3000", "https://mellow-mandazi-2b8ed7.netlify.app"], credentials: true }));
 app.use(express.json());
@@ -19,7 +20,7 @@ app.get('/', (req, res) => {
 mongoose.set('strictQuery', true);
 
 mongoose
-    .connect("mongodb://localhost:27017/auth_mern", {
+    .connect(URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
@@ -37,4 +38,10 @@ app.listen(PORT, () => {
 })
 
 
-app.use('/', authRouter) 
+app.use('/', authRouter)
+
+
+// .connect("mongodb://localhost:27017/auth_mern", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+// })
