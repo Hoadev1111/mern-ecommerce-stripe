@@ -37,9 +37,12 @@ const Cart = () => {
   // http://localhost:4000
   const handleCheckOut = async () => {
     setDisableButton(true);
-    const res = await axios.post(`http://localhost:4000/checkout`, {
-      carts,
-    });
+    const res = await axios.post(
+      `https://mern-ecommerce-stripe.onrender.com/checkout`,
+      {
+        carts,
+      }
+    );
     const data = await res.data;
     console.log(data);
     window.location.href = data.url;

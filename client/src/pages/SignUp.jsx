@@ -22,10 +22,13 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`http://localhost:4000/signup`, {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        `https://mern-ecommerce-stripe.onrender.com/signup`,
+        {
+          email,
+          password,
+        }
+      );
       const data = res.data;
       console.log('data: ', data);
       navigate('/login');
