@@ -16,7 +16,6 @@ const Login = () => {
   const detail = localStorage.getItem('detail');
   // take param and navigate to it when user login
   const paramDetail = detail?.split('0/')[1];
-  const PORT = process.env.PORT || 4001;
 
   useEffect(() => {
     if (cookies['auth-mern']) {
@@ -29,7 +28,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`http://localhost:${PORT}/login`, {
+      const res = await axios.post(`http://localhost:4000/login`, {
         email,
         password,
       });

@@ -10,7 +10,6 @@ const SignUp = () => {
   const [error, setError] = useState('');
   const [cookies, setCookie, removeCookie] = useCookies([]);
   const navigate = useNavigate();
-  const PORT = process.env.PORT || 4001;
 
   useEffect(() => {
     if (cookies['auth-mern']) {
@@ -23,7 +22,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`http://localhost:${PORT}/signup`, {
+      const res = await axios.post(`http://localhost:4000/signup`, {
         email,
         password,
       });

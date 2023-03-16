@@ -14,7 +14,6 @@ import axios from 'axios';
 const Cart = () => {
   const [disableButton, setDisableButton] = useState(false);
   const carts = useSelector((state) => state.cart.carts);
-  const PORT = process.env.PORT || 4001;
 
   const totalPriceItem = carts.reduce(
     (init, cur) => init + cur.price * cur.quantity,
@@ -37,7 +36,7 @@ const Cart = () => {
 
   const handleCheckOut = async () => {
     setDisableButton(true);
-    const res = await axios.post(`http://localhost:${PORT}/checkout`, {
+    const res = await axios.post(`http://localhost:4000/checkout`, {
       carts,
     });
     const data = await res.data;

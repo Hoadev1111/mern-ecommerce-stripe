@@ -19,7 +19,6 @@ const Products = () => {
   const items = useSelector((state) => state.cart.items);
   const isLogin = useSelector((state) => state.auth.isLogin);
   const navigate = useNavigate();
-  const PORT = process.env.PORT || 4001;
 
   // get product
   const getProduct = async () => {
@@ -35,7 +34,7 @@ const Products = () => {
   // refresh token
   const refreshToken = async () => {
     const res = await axios.get(
-      `http://localhost:${PORT}/refreshToken`,
+      `http://localhost:4000/refreshToken`,
       {},
       {
         withCredentials: true,

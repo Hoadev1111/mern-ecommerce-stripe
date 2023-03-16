@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose')
 const authRouter = require('./Routes/AuthRoutes')
+require('dotenv').config();
 
 const app = express();
 
@@ -29,7 +30,7 @@ mongoose
         console.log(err.message);
     });
 
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT
 
 app.listen(PORT, () => {
     console.log(`App is running on port ${PORT}`);
