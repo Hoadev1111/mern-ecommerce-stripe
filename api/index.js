@@ -7,7 +7,7 @@ const authRouter = require('./Routes/AuthRoutes')
 require('dotenv').config();
 
 const app = express();
-const URL = process.env.MONGODB_URL;
+const URL = process.env.DATABASE_URL;
 
 app.use(cors({ origin: ["http://localhost:3000", "https://mellow-mandazi-2b8ed7.netlify.app"], credentials: true }));
 app.use(express.json());
