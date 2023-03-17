@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(cors({ origin: ["https://regal-kataifi-209546.netlify.app/login", "http://localhost:3000", "https://regal-kataifi-209546.netlify.app/signup", "https://regal-kataifi-209546.netlify.app/checkout"], credentials: true }));
+app.use(cors({ origin: ["https://regal-kataifi-209546.netlify.app", "https://regal-kataifi-209546.netlify.app/login", "http://localhost:3000", "https://regal-kataifi-209546.netlify.app/signup", "https://regal-kataifi-209546.netlify.app/checkout"], credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
