@@ -9,12 +9,12 @@ require('dotenv').config();
 const app = express();
 
 app.use(cors({
-    origin: ["https://6413d7be0ff0ef573a7d93e7--regal-kataifi-209546.netlify.app",
-        "https://6413d7be0ff0ef573a7d93e7--regal-kataifi-209546.netlify.app/login",
-        "http://localhost:3000", "https://6413d7be0ff0ef573a7d93e7--regal-kataifi-209546.netlify.app/signup",
-        "https://6413d7be0ff0ef573a7d93e7--regal-kataifi-209546.netlify.app/checkout",
-        "https://6413d7be0ff0ef573a7d93e7--regal-kataifi-209546.netlify.app/success",
-        "https://6413d7be0ff0ef573a7d93e7--regal-kataifi-209546.netlify.app/cancel"
+    origin: ["https://spectacular-bublanina-eee7e3.netlify.app",
+        "https://spectacular-bublanina-eee7e3.netlify.app/login",
+        "http://localhost:3000", "https://spectacular-bublanina-eee7e3.netlify.app/signup",
+        "https://spectacular-bublanina-eee7e3.netlify.app/checkout",
+        "https://spectacular-bublanina-eee7e3.netlify.app/success",
+        "https://spectacular-bublanina-eee7e3.netlify.app/cancel"
     ], credentials: true
 }));
 app.use(express.json());
