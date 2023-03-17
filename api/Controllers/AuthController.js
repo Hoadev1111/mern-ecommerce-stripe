@@ -147,8 +147,8 @@ const checkout = async (req, res, next) => {
 
         line_items,
         mode: "payment",
-        success_url: 'https://regal-kataifi-209546.netlify.app/success',
-        cancel_url: 'https://regal-kataifi-209546.netlify.app/cancel',
+        success_url: 'https://6413d7be0ff0ef573a7d93e7--regal-kataifi-209546.netlify.app/success',
+        cancel_url: 'https://6413d7be0ff0ef573a7d93e7--regal-kataifi-209546.netlify.app/cancel',
     });
 
     res.send({ url: session.url });
