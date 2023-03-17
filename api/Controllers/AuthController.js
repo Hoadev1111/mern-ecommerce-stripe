@@ -137,7 +137,8 @@ const checkout = async (req, res, next) => {
     });
 
 
-
+    // success_url: 'http://localhost:3000/success',
+    // cancel_url: 'http://localhost:3000/cancel',
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         shipping_address_collection: {
@@ -146,8 +147,8 @@ const checkout = async (req, res, next) => {
 
         line_items,
         mode: "payment",
-        success_url: 'http://localhost:3000/success',
-        cancel_url: 'http://localhost:3000/cancel',
+        success_url: 'https://regal-kataifi-209546.netlify.app/success',
+        cancel_url: 'https://regal-kataifi-209546.netlify.app/cancel',
     });
 
     res.send({ url: session.url });
