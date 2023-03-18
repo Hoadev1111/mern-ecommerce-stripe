@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { FaShoppingBag, FaSearch } from 'react-icons/fa';
+import { FaShoppingBag, FaSearch, FaBars, FaWindowClose } from 'react-icons/fa';
 import '../scss/header.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,6 +10,7 @@ import axios from 'axios';
 
 const Header = () => {
   const [searchInput, setSearchInput] = useState('');
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies([]);
 
   const carts = useSelector((state) => state.cart.carts);
@@ -22,6 +23,8 @@ const Header = () => {
   // const quantity = carts.length;
   const headerRef = useRef();
   const initialDataRef = useRef([]);
+  const modelRef = useRef();
+  const navbarRef = useRef();
 
   // make param pass to handleSearchInput not change.
   const fetchData = async () => {
@@ -80,6 +83,27 @@ const Header = () => {
     localStorage.removeItem('detail');
     navigate('/');
   };
+
+  // handle when userclick icon bar
+  const handleOpenMenu = () => {
+    modelRef.current.classList.toggle('active');
+    navbarRef.current.classList?.toggle('active');
+    setIsOpenMenu(true);
+    console.log(isOpenMenu);
+  };
+  //hanle when user click icon close
+  const handleCloseMenu = () => {
+    modelRef.current.classList.toggle('active');
+    navbarRef.current.classList?.toggle('active');
+    setIsOpenMenu(false);
+    console.log(isOpenMenu);
+  };
+  // handle click model
+  const handleClickModel = () => {
+    modelRef.current.classList.toggle('active');
+    navbarRef.current.classList?.toggle('active');
+    setIsOpenMenu(false);
+  };
   return (
     <div className="header" ref={headerRef}>
       <div className="container">
@@ -102,29 +126,38 @@ const Header = () => {
             <FaSearch />
           </i>
         </div>
-        {/* LOG IN & SIGN UP */}
-        {!isLogin && (
-          <div className="authen">
-            <Link to="login">LogIn</Link>
-            <Link to="signup">SignUp</Link>
+        <div onClick={handleClickModel} ref={modelRef} className="model"></div>
+        <div ref={navbarRef} className="nav-bar">
+          {/* LOG IN & SIGN UP */}
+          {!isLogin && (
+            <div className="authen">
+              <Link to="login">LogIn</Link>
+              <Link to="signup">SignUp</Link>
+            </div>
+          )}
+          {/* LOG OUT */}
+          {isLogin && (
+            <div className="logout-btn" onClick={handleLogout}>
+              <Link>Logout</Link>
+            </div>
+          )}
+          {/* icon bag */}
+          <div className="icon-bag" onClick={handleOpenCart}>
+            <Link to="/cart">
+              <FaShoppingBag />
+              <span>{quantity}</span>
+            </Link>
           </div>
-        )}
-        {/* LOG OUT */}
-        {isLogin && (
-          <div className="logout-btn" onClick={handleLogout}>
-            <Link>Logout</Link>
-          </div>
-        )}
-        {/* icon bag */}
-        <div className="icon-bag" onClick={handleOpenCart}>
-          <Link to="/cart">
-            <FaShoppingBag />
-            <span>{quantity}</span>
-          </Link>
         </div>
-        {/* <div className="menu">
-          <FaBars />
-        </div> */}
+        {isOpenMenu ? (
+          <div className="close" onClick={handleCloseMenu}>
+            <FaWindowClose />
+          </div>
+        ) : (
+          <div className="menu" onClick={handleOpenMenu}>
+            <FaBars />
+          </div>
+        )}
       </div>
     </div>
   );
